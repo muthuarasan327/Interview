@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <stdint.h>
 /**
 pointer integer,string, arthmetic, pointer arrar, arrar pointer,
 function pointer, callback, const pointer and pointer to const,
@@ -84,20 +84,23 @@ void array_pointer()
     printf("array pointer index:%d",*(arr+1));
 }
 
-void function_pointer(info_t *data)
+void function_pointer(info_t *data, void *data1)
 {
     printf("\nHello from function pointer");
-    printf("\na:%d b:%d c:%c",data->a,data->b,data->c);
+    printf("\na:%d b:%d c:%c\n",data->a,data->b,data->c);
+    printf("void pointer function value:%x",*((uint32_t*)data1));
 }
 
-void callback(void (*call) (info_t*))
+void callback(void (*call) (info_t*,void*))
 {
     info_t arg;
     arg.a = 30;
     arg.b = 40;
     arg.c = 'n';
+    uint32_t ab=0xffffffff;
+    void *ptr = &ab;
     printf("\ncalling callback function");
-    call(&arg);
+    call(&arg,ptr);
 }
 
 int main()
@@ -109,14 +112,20 @@ int main()
     pointer_array();
     array_pointer();
 
+    /* void pointer */
+    uint32_t a_void = 0xffffffff;
+    void *ptr_void;
+    ptr_void = &a_void;
+    printf("void pointer value:%d\n",*((int*)ptr_void));
+
     /* function pointer and argument */
-    void (*fun_ptr) (info_t*);
+    void (*fun_ptr) (info_t*,void*);
     fun_ptr = function_pointer;
     info_t arg;
     arg.a = 10;
     arg.b = 20;
     arg.c = 'm';
-    fun_ptr(&arg);
+    fun_ptr(&arg,ptr_void);
 
     /* callback */
     callback(function_pointer);
