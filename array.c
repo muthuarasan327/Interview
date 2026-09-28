@@ -134,9 +134,9 @@ int str_len(char *str)
 
 int main()
 {
-    int arr[] = {5,7,9,7,7,1,6,8,1,8,6,99,99};
+    // int arr[] = {5,7,9,7,7,1,6,8,1,8,6,99,99};
 
-    int len = sizeof(arr)/sizeof(arr[0]);   
+    // int len = sizeof(arr)/sizeof(arr[0]);   
 
     // move_zero_to_last(arr,len);
     // printf("\n%d",VALUE(2+3));
@@ -149,7 +149,21 @@ int main()
 
     // remove_element(arr,pos,len);
     // sorted_dublicate_remove(arr,len);
-    unsorted_duplicate_remove(arr,len);
-    char str[] = "aabbhhuwenehfe";
-    string_duplicate_remove(str,str_len(str));
+    // unsorted_duplicate_remove(arr,len);
+    // char str[] = "aabbhhuwenehfe";
+    // string_duplicate_remove(str,str_len(str));
+
+    uint8_t twodarr[2][5] = {{1,2,3,4,5},{9,8,7,6,5}};
+    
+    for(int i=0;i<2;i++)
+    {
+        for(int j=0;j<5;j++)
+        {
+            printf("data:%hhu\n",twodarr[i][j]);
+        }
+    }
+
+    uint8_t *tdptr = &twodarr[0][0];
+
+    printf("%d",*twodarr+1);
 }
