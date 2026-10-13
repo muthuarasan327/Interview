@@ -27,7 +27,25 @@ void remove_element(int arr[],int pos,int len)
     printf("value %d:%d\n",i,arr[i]);
 }
 
-/* Find dublicate numbers and count */
+/* Find the element frequency count */
+void find_Frequency_count(int data[],int len1)
+{
+    for(int i=0;i<len1;i++)
+    {
+        if(data[i] ==0)
+        continue;
+        int count = 1;
+        for(int j=i+1;j<len1;j++)
+        {
+            if(data[i] == data[j])
+            {
+                count++;
+                data[j] = 0;
+            }
+        }
+        printf("\nElement %d Count:%d",data[i],count);
+    }
+}
 
 /* unsorted remove duplicate number */
 void unsorted_duplicate_remove(int arr[],int len)
@@ -134,9 +152,10 @@ int str_len(char *str)
 
 int main()
 {
-    // int arr[] = {5,7,9,7,7,1,6,8,1,8,6,99,99};
+    int arr[] = {5,7,9,7,7,1,6,8,1,8,6,99,99};
 
-    // int len = sizeof(arr)/sizeof(arr[0]);   
+    int len = sizeof(arr)/sizeof(arr[0]);   
+    find_Frequency_count(arr,len);
 
     // move_zero_to_last(arr,len);
     // printf("\n%d",VALUE(2+3));
